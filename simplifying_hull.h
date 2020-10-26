@@ -4,7 +4,7 @@
 #include <vector>
 #include "structures_point.h"
 
-double ang(point a, point b, point c);
-void simplifying_hull(std::vector <point> *hull);
+double ang(point <int> a, point <int> b, point <int> c);
+void simplifying_hull(std::vector <point <int> > *hull);
 
 #endif

@@ -3,11 +3,11 @@
 #include "structures_point.h"
 #include "basicfun.h"
 
-double ang(point a, point b, point c)
+double ang(point <int> a, point <int> b, point <int> c)
 {
     return ((c.i - b.i)*(b.i - a.i) + (c.j - b.j)*(b.j - a.j)) / (sqrt(dist(a, b))*(sqrt(dist(c, b))));
 }
-void simplifying_hull(std::vector <point> *hull)
+void simplifying_hull(std::vector <point <int>> *hull)
 {
     int m, j;
     double e = 0.995;

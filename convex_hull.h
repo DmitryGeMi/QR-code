@@ -4,6 +4,6 @@
 #include <vector>
 #include "structures_point.h"
 
-std::vector<point> convex_hull(std::vector<point> pnt);
+std::vector<point <int>> convex_hull(std::vector<point <int>> pnt);
 
 #endif

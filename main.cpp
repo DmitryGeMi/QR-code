@@ -18,16 +18,16 @@ int  main(int argc, char* argv[])
     cv::Mat img = cv::imread(path);
     int i = 0, j = 0, threshold = 60;
     int lft = img.cols - 1, rt = 0, up = img.rows - 1, down = 0;
-    std::vector <point> pnt;
-    std::vector <point> hull;
-    point pntinside[8];
+    std::vector <point <int>> pnt;
+    std::vector <point <int>> hull;
+    point <int> pntinside[8];
 
     std::vector <std::vector < double>> matrix(img.rows);
     for (i = 0; i < img.rows; i++)
         matrix[i].resize(img.cols);
     convert_rgb_in_monochrome(img, matrix);
 
-    std::vector <std::vector < grad >> g(img.rows);
+    std::vector <std::vector < point <double>>> g(img.rows);
     for (i = 0; i < img.rows; i++)
         g[i].resize(img.cols);
     g = gradient(matrix, img.rows, img.cols);

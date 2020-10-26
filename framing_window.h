@@ -5,6 +5,6 @@
 #include <vector>
 #include "structures_point.h"
 
-void framing_window(std::vector <std::vector < grad>> mat, int a, int b, cv::Mat *img,int &lft,int &rt,int &up,int &down);
+void framing_window(std::vector <std::vector < point <double>>> mat, int a, int b, cv::Mat *img,int &lft,int &rt,int &up,int &down);
 
 #endif

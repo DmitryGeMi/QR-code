@@ -2,9 +2,9 @@
 #include <vector>
 #include "structures_point.h"
 
-std::vector <std::vector < grad>> gradient(std::vector <std::vector < double>> mat, int a, int b)
+std::vector <std::vector < point <double>>> gradient(std::vector <std::vector < double>> mat, int a, int b)
 {
-    std::vector <std::vector < grad>> gradimg(a);
+    std::vector <std::vector < point <double>>> gradimg(a);
     int i, j;
     double maxgrad = 0;
     for (i = 0; i < a; i++)

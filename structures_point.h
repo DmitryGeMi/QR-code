@@ -1,15 +1,12 @@
 #ifndef STRUCTURES_H
 #define STRUCTURES_H
 
+template < typename T >
 struct point
 {
-    int i;
-    int j;
+    T i;
+    T j;
 };
-struct grad
-{
-    double i;
-    double j;
-};
+
 
 #endif

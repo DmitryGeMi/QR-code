@@ -16,12 +16,12 @@ int second_operator(int &j, bool second_operation)
     else
         j--;
 }
-void boundary_point_one_side(std::vector <point> *pnt, cv::Mat *img,int threshold,
+void boundary_point_one_side(std::vector <point <int>> *pnt, cv::Mat *img,int threshold,
                              int begin_first, int begin_second,
                              int end_first, int end_second,
                              bool first_operation, bool second_operation, bool is_vect)
 {
-    point auxiliary_point;
+    point <int> auxiliary_point;
     bool flg = false;
     int i, j, m;
     for (i = begin_first; (((i < end_first)*first_operation)||((i > end_first)*!first_operation)); first_operator(i, first_operation))
@@ -72,7 +72,7 @@ void boundary_point_one_side(std::vector <point> *pnt, cv::Mat *img,int threshol
         }
 }
 
-void boundary_point(std::vector <point> *pnt, cv::Mat *img,int threshold)
+void boundary_point(std::vector <point <int>> *pnt, cv::Mat *img,int threshold)
 {
     boundary_point_one_side(pnt, img, threshold,
                                  0, 0,

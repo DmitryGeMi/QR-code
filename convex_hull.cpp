@@ -2,11 +2,11 @@
 #include "structures_point.h"
 #include "basicfun.h"
 
-std::vector<point> convex_hull(std::vector<point> pnt) {
-    point p0 = pnt[0];
-    point p1;
+std::vector<point <int>> convex_hull(std::vector<point <int>> pnt) {
+    point <int> p0 = pnt[0];
+    point <int> p1;
     int i = 0, k = 0, m = 1;
-    for (point p : pnt)
+    for (point <int> p : pnt)
     {
         if ((p.i > p0.i) || (p.j == p0.j && p.j < p0.j))
         {
@@ -20,7 +20,7 @@ std::vector<point> convex_hull(std::vector<point> pnt) {
     pnt[k] = p1;
     p1 = p0;
     bool flg = false;
-    std::vector<point> hull = { p0 };
+    std::vector<point <int>> hull = { p0 };
     while (flg == false)
     {
         for (i = 1; i < pnt.size(); i++)

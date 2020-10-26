@@ -4,44 +4,44 @@
 #include "structures_point.h"
 #include "basicfun.h"
 
-void add_point_pntinside(point *pntinside, point point1, point point2)
+void add_point_pntinside(point <int> *pntinside, point <int> point1, point <int> point2)
 {
     pntinside[6].i = point1.i;
     pntinside[6].j = point1.j;
     pntinside[7].i = point2.i;
     pntinside[7].j = point2.j;
 }
-void move_point_3_4(point *pntinside)
+void move_point_3_4(point <int> *pntinside)
 {
     pntinside[0].i = pntinside[2].i;
     pntinside[0].j = pntinside[2].j;
     pntinside[1].i = pntinside[3].i;
     pntinside[1].j = pntinside[3].j;
 }
-void move_point_5_6(point *pntinside)
+void move_point_5_6(point <int> *pntinside)
 {
     pntinside[2].i = pntinside[4].i;
     pntinside[2].j = pntinside[4].j;
     pntinside[3].i = pntinside[5].i;
     pntinside[3].j = pntinside[5].j;
 }
-void move_point_7_8(point *pntinside)
+void move_point_7_8(point <int> *pntinside)
 {
     pntinside[4].i = pntinside[6].i;
     pntinside[4].j = pntinside[6].j;
     pntinside[5].i = pntinside[7].i;
     pntinside[5].j = pntinside[7].j;
 }
-void paint_angles(cv::Mat *img, point *pntinside)
+void paint_angles(cv::Mat *img, point <int> *pntinside)
 {
-    point t;
+    point <int> t;
     for (int m = 0; m < 8; m = m + 2)
     {
         t = intersection(pntinside[m % 8], pntinside[(m + 1) % 8], pntinside[(m + 2) % 8], pntinside[(m + 3) % 8]);
         circle(*img, cv::Point(t.j, t.i), 1, cv::Scalar(50, 100, 200));
     }
 }
-void finding_corner_points(std::vector <point> *hull, point *pntinside)
+void finding_corner_points(std::vector <point <int>> *hull, point <int> *pntinside)
 {
     int k = 0, l1, l2, l3, l4, m;
     l1 = dist(hull->at(0), hull->at(1));

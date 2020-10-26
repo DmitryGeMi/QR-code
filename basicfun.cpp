@@ -1,16 +1,16 @@
 #include "structures_point.h"
 
-int vect(point p0,point a,point b)
+int vect(point <int> p0,point <int> a,point <int> b)
 {
     return (a.i - p0.i)*(b.j - p0.j) - (a.j - p0.j)*(b.i - p0.i);
 }
-int dist(point a, point b)
+int dist(point <int> a, point <int> b)
 {
     return (a.i - b.i)*(a.i - b.i) + (a.j - b.j)*(a.j - b.j);
 }
-point intersection(point a, point b, point c, point d)
+point <int> intersection(point <int> a, point <int> b, point <int> c, point <int> d)
 {
-    point p;
+    point <int> p;
     double a1, a2, b1, b2, c1, c2, det;
     a1 = a.j - b.j;
     b1 = b.i - a.i;
