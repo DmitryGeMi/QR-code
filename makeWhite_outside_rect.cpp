@@ -1,4 +1,4 @@
-#include "makeWhite_outside_rect.h"
+#include <opencv2/core/core.hpp>
 
 void makeWhite(cv::Mat *img, int i, int j)
 {

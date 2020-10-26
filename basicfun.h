@@ -1,7 +1,7 @@
 #ifndef BASICFUN_H
 #define BASICFUN_H
 
-#include "structures.h"
+#include "structures_point.h"
 
 int vect(point p0, point a, point b);
 int dist(point a, point b);

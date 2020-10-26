@@ -1,4 +1,8 @@
-#include "finding_corner_points.h"
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc.hpp>
+#include <vector>
+#include "structures_point.h"
+#include "basicfun.h"
 
 void add_point_pntinside(point *pntinside, point point1, point point2)
 {

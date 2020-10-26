@@ -1,25 +1,35 @@
-#include "boundary_point.h"
+#include <opencv2/core/core.hpp>
+#include <vector>
+#include "structures_point.h"
 
-void boundary_point(std::vector <point> *pnt, cv::Mat *img)
+int first_operator(int &i, bool first_operation)
 {
-    point point;
+    if (first_operation == true)
+        i++;
+    else
+        i--;
+}
+int second_operator(int &j, bool second_operation)
+{
+    if (second_operation == true)
+        j++;
+    else
+        j--;
+}
+void boundary_point_one_side(std::vector <point> *pnt, cv::Mat *img,int threshold,
+                             int begin_first, int begin_second,
+                             int end_first, int end_second,
+                             bool first_operation, bool second_operation, bool is_vect)
+{
+    point auxiliary_point;
     bool flg = false;
     int i, j, m;
-    for (i = 0; i < img->rows; i++)
-        for (j = 0; j < img->cols; j++)
+    for (i = begin_first; (((i < end_first)*first_operation)||((i > end_first)*!first_operation)); first_operator(i, first_operation))
+        for (j = begin_second; (((j < end_second)*second_operation)||((j > end_second)*!second_operation)); second_operator(j, second_operation))
         {
-            if ((img->at<cv::Vec3b>(i, j)[0] < 60) && (img->at<cv::Vec3b>(i, j)[1] < 60) && (img->at<cv::Vec3b>(i, j)[2] < 60))
-            {
-                point.i = i;
-                point.j = j;
-                pnt->push_back(point);
-                break;
-            }
-        }
-    for (j = img->cols - 1; j > 0; j--)
-        for (i = 0; i < img->rows; i++)
-        {
-            if ((img->at<cv::Vec3b>(i, j)[0] < 60) && (img->at<cv::Vec3b>(i, j)[1] < 60) && (img->at<cv::Vec3b>(i, j)[2] < 60))
+           if(is_vect == true)
+           {
+            if ((img->at<cv::Vec3b>(i, j)[0] < threshold) && (img->at<cv::Vec3b>(i, j)[1] < threshold) && (img->at<cv::Vec3b>(i, j)[2] < threshold))
             {
                 for (m = 0; m < pnt->size(); m++)
                 {
@@ -30,56 +40,54 @@ void boundary_point(std::vector <point> *pnt, cv::Mat *img)
                 }
                 if (flg == false)
                 {
-                    point.i = i;
-                    point.j = j;
-                    pnt->push_back(point);
+                    auxiliary_point.i = i;
+                    auxiliary_point.j = j;
+                    pnt->push_back(auxiliary_point);
                 }
                 flg = false;
                 break;
             }
+           }
+           else
+           {
+               if ((img->at<cv::Vec3b>(j, i)[0] < threshold) && (img->at<cv::Vec3b>(j, i)[1] < threshold) && (img->at<cv::Vec3b>(j, i)[2] < threshold))
+               {
+                   for (m = 0; m < pnt->size(); m++)
+                   {
+                       if ((pnt->at(m).i == j) && (pnt->at(m).j == i))
+                       {
+                           flg = true;
+                       }
+                   }
+                   if (flg == false)
+                   {
+                       auxiliary_point.i = j;
+                       auxiliary_point.j = i;
+                       pnt->push_back(auxiliary_point);
+                   }
+                   flg = false;
+                   break;
+               }
+           }
         }
-    for (j = 0; j < img->cols; j++)
-        for (i = img->rows - 1; i > 0; i--)
-        {
-            if ((img->at<cv::Vec3b>(i, j)[0] < 60) && (img->at<cv::Vec3b>(i, j)[1] < 60) && (img->at<cv::Vec3b>(i, j)[2] < 60))
-            {
-                for (m = 0; m < pnt->size(); m++)
-                {
-                    if ((pnt->at(m).i == i) && (pnt->at(m).j == j))
-                    {
-                        flg = true;
-                    }
-                }
-                if (flg == false)
-                {
-                    point.i = i;
-                    point.j = j;
-                    pnt->push_back(point);
-                }
-                flg = false;
-                break;
-            }
-        }
-    for (i = img->rows - 1; i > 0; i--)
-        for (j = img->cols - 1; j > 0; j--)
-        {
-            if ((img->at<cv::Vec3b>(i, j)[0] < 60) && (img->at<cv::Vec3b>(i, j)[1] < 60) && (img->at<cv::Vec3b>(i, j)[2] < 60))
-            {
-                for (m = 0; m < pnt->size(); m++)
-                {
-                    if ((pnt->at(m).i == i) && (pnt->at(m).j == j))
-                    {
-                        flg = true;
-                    }
-                }
-                if (flg == false)
-                {
-                    point.i = i;
-                    point.j = j;
-                    pnt->push_back(point);
-                }
-                flg = false;
-                break;
-            }
-        }
+}
+
+void boundary_point(std::vector <point> *pnt, cv::Mat *img,int threshold)
+{
+    boundary_point_one_side(pnt, img, threshold,
+                                 0, 0,
+                                 img->rows, img->cols,
+                                 true, true, true);
+    boundary_point_one_side(pnt, img, threshold,
+                                 img->cols - 1, 0,
+                                 0, img->rows,
+                                 false, true, false);
+    boundary_point_one_side(pnt, img, threshold,
+                                 0, img->rows - 1,
+                                 img->cols, 0,
+                                 true, false, false);
+    boundary_point_one_side(pnt, img, threshold,
+                                 img->rows - 1, img->cols - 1,
+                                 0, 0,
+                                 false, false, true);
 }

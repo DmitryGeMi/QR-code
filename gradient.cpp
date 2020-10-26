@@ -1,4 +1,6 @@
-#include "gradient.h"
+#include <opencv2/core/core.hpp>
+#include <vector>
+#include "structures_point.h"
 
 std::vector <std::vector < grad>> gradient(std::vector <std::vector < double>> mat, int a, int b)
 {

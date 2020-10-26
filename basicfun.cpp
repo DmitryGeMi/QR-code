@@ -1,6 +1,6 @@
-#include "basicfun.h"
+#include "structures_point.h"
 
-int vect(point p0, point a, point b)
+int vect(point p0,point a,point b)
 {
     return (a.i - p0.i)*(b.j - p0.j) - (a.j - p0.j)*(b.i - p0.i);
 }
