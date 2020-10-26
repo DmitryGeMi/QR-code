@@ -5,7 +5,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc.hpp>
 #include <vector>
-#include "structures_and_basicfun.h"
+#include "structures.h"
 
 void boundary_point(std::vector <point> *pnt, cv::Mat *img);
 

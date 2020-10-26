@@ -1,6 +1,4 @@
-#include <vector>
-#include "structures_and_basicfun.h"
-#include <cmath>
+#include "simplifying_hall.h"
 
 double ang(point a, point b, point c)
 {

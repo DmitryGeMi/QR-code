@@ -1,5 +1,4 @@
-#include <vector>
-#include "structures_and_basicfun.h"
+#include "convex_hull.h"
 
 std::vector<point> convex_hull(std::vector<point> pnt) {
     point p0 = pnt[0];

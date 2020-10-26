@@ -1,4 +1,4 @@
-#include "structures_and_basicfun.h"
+#include "basicfun.h"
 
 int vect(point p0, point a, point b)
 {

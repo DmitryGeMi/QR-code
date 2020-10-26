@@ -5,7 +5,8 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc.hpp>
 #include <vector>
-#include "structures_and_basicfun.h"
+#include "structures.h"
+#include "basicfun.h"
 
 void add_point_pntinside(point *pntinside, point point1, point point2);
 void move_point_3_4(point *pntinside);

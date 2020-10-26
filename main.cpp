@@ -1,17 +1,11 @@
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/imgproc.hpp>
-#include <iostream>
-#include <string>
-#include <algorithm>
-#include <vector>
-
 #include "convex_hull.h"
 #include "makeWhite_outside_rect.h"
-#include "structures_and_basicfun.h"
+#include "structures.h"
+#include "basicfun.h"
 #include "simplifying_hall.h"
 #include "finding_corner_points.h"
-#include "gradient_and_framing_window.h"
+#include "framing_window.h"
+#include "gradient.h"
 #include "boundary_point.h"
 
 int  main(int argc, char* argv[])
@@ -40,8 +34,8 @@ int  main(int argc, char* argv[])
     for (i = 0; i < imggrad.rows; i++)
         for (j = 0; j < imggrad.cols; j++)
             imggrad.at<uchar>(i, j) = sqrt(g[i][j].i*g[i][j].i + g[i][j].j*g[i][j].j) * 255;
-    framing_window(g, img.rows, img.cols, & img, lft, rt, up, down);
-    makeWhite_outside_rect(& img, lft, rt, up, down);
+    framing_window(g, img.rows, img.cols, &img, lft, rt, up, down);
+    makeWhite_outside_rect( &img, lft, rt, up, down);
     boundary_point(&pnt, &img);
     hull = convex_hull(pnt);
     simplifying_hall(&hull);
