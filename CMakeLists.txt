@@ -4,8 +4,10 @@ project(QRcode)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
-set(HEADERS "add.h" "makeWhite_outside_rect.h")
-set(SOURCES "main.cpp" "add.cpp" "makeWhite_outside_rect.cpp")
+set(HEADERS "convex_hull.h" "makeWhite_outside_rect.h" "simplifying_hall.h" "structures_and_basicfun.h"
+    "finding_corner_points.h" "gradient_and_framing_window.h" "boundary_point.h")
+set(SOURCES "main.cpp" "convex_hull.cpp" "makeWhite_outside_rect.cpp" "simplifying_hall.cpp" "structures_and_basicfun.cpp"
+    "finding_corner_points.cpp" "gradient_and_framing_window.cpp" "boundary_point.cpp")
 
 find_package(Qt5Core)
 find_package( OpenCV REQUIRED )

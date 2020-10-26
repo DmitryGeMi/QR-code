@@ -1,18 +1,6 @@
 #include <vector>
+#include "structures_and_basicfun.h"
 
-struct point
-{
-    int i;
-    int j;
-};
-int vect(point p0, point a, point b)
-{
-    return (a.i - p0.i)*(b.j - p0.j) - (a.j - p0.j)*(b.i - p0.i);
-}
-int dist(point a, point b)
-{
-    return (a.i - b.i)*(a.i - b.i) + (a.j - b.j)*(a.j - b.j);
-}
 std::vector<point> convex_hull(std::vector<point> pnt) {
     point p0 = pnt[0];
     point p1;

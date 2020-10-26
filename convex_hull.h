@@ -1,13 +1,9 @@
-#ifndef ADD_H
-#define ADD_H
+#ifndef CONVEX_HULL_H
+#define CONVEX_HULL_H
 
 #include <vector>
+#include "structures_and_basicfun.h"
 
-struct point
-{
-    int i;
-    int j;
-};
 std::vector<point> convex_hull(std::vector<point> pnt);
 int vect(point p0, point a, point b);
 int dist(point a, point b);
