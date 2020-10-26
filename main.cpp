@@ -17,7 +17,6 @@ int  main(int argc, char* argv[])
     int lft = img.cols - 1, rt = 0, up = img.rows - 1, down = 0;
     std::vector <point> pnt;
     std::vector <point> hull;
-    point pntinside[8];
     std::vector <std::vector < double>> matrix(img.rows);
     for (i = 0; i < img.rows; i++)
     {
