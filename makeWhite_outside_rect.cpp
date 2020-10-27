@@ -2,9 +2,11 @@
 
 void makeWhite(cv::Mat& img, int i, int j)
 {
-    img.at<cv::Vec3b>(i, j)[0] = 255;
-    img.at<cv::Vec3b>(i, j)[1] = 255;
-    img.at<cv::Vec3b>(i, j)[2] = 255;
+    uchar* line = img.data + i * img.step;
+    for (int c = 0; c <img.channels(); c++)
+    {
+        line[j*img.channels()+c] = 255;
+    }
 }
 
 void makeWhite_outside_rect(cv::Mat & img,int lft,int rt,int up,int down)
