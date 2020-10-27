@@ -8,5 +8,4 @@ struct point
     T j;
 };
 
-
 #endif

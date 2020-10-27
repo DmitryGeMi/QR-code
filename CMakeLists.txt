@@ -5,10 +5,10 @@ project(QRcode)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(HEADERS "convex_hull.h" "makeWhite_outside_rect.h" "simplifying_hull.h" "basicfun.h"
-    "finding_corner_points.h" "gradient.h"  "framing_window.h" "boundary_point.h"
-    "structures_point.h" "convert_rgb_in_monochrome.h" "make_img_from_gradient.h")
+    "finding_corner_points.h" "gradient.h"  "sides_of_gradient_box.h" "boundary_point.h"
+    "structures_point.h" "convert_in_monochrome.h" "make_img_from_gradient.h")
 set(SOURCES "main.cpp" "convex_hull.cpp" "makeWhite_outside_rect.cpp" "simplifying_hull.cpp" "basicfun.cpp"
-    "finding_corner_points.cpp" "gradient.cpp" "framing_window.cpp" "boundary_point.cpp" "convert_rgb_in_monochrome.cpp" "make_img_from_gradient.cpp")
+    "finding_corner_points.cpp" "gradient.cpp" "sides_of_gradient_box.cpp" "boundary_point.cpp" "convert_in_monochrome.cpp" "make_img_from_gradient.cpp")
 
 find_package(Qt5Core)
 find_package( OpenCV REQUIRED )

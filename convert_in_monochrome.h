@@ -4,6 +4,6 @@
 #include <opencv2/core/core.hpp>
 #include <vector>
 
-void convert_rgb_in_monochrome(cv::Mat img, std::vector <std::vector < double>> &matrix);
+void convert_rgb_in_monochrome(const cv::Mat& img, std::vector <std::vector < double>> &matrix);
 
 #endif

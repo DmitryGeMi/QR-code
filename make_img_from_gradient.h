@@ -4,6 +4,6 @@
 #include <opencv2/core/core.hpp>
 #include "structures_point.h"
 
-void make_img_from_gradient(cv::Mat *imggrad, std::vector <std::vector < point <double>>> g);
+void make_img_from_gradient(cv::Mat &imggrad, const std::vector <std::vector < point <double>>>& g);
 
 #endif

@@ -7,7 +7,7 @@ double ang(point <int> a, point <int> b, point <int> c)
 {
     return ((c.i - b.i)*(b.i - a.i) + (c.j - b.j)*(b.j - a.j)) / (sqrt(dist(a, b))*(sqrt(dist(c, b))));
 }
-void simplifying_hull(std::vector <point <int>> *hull)
+void simplify_hull(std::vector <point <int>> *hull)
 {
     int m, j;
     double e = 0.995;
