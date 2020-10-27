@@ -1,6 +1,6 @@
 #include <opencv2/core/core.hpp>
 
-void makeWhite(cv::Mat& img, int i, int j)
+void makeWhite(cv::Mat &img, const int i, const int j)
 {
     uchar* line = img.data + i * img.step;
     for (int c = 0; c <img.channels(); c++)
@@ -9,7 +9,7 @@ void makeWhite(cv::Mat& img, int i, int j)
     }
 }
 
-void makeWhite_outside_rect(cv::Mat & img,int lft,int rt,int up,int down)
+void makeWhite_outside_rect(cv::Mat &img,const int lft,const int rt,const int up,const int down)
 {
     int i,j;
     for (i = 0; i < up; i++)

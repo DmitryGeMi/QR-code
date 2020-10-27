@@ -2,36 +2,36 @@
 #include <vector>
 #include "structures_point.h"
 
-void framing_window(std::vector <std::vector < point <double>>> mat, int a, int b, cv::Mat *img,int &lft,int &rt,int &up,int &down)
+void sides_of_gradient_box(int &lft, int &rt, int &up, int &down, std::vector <std::vector < point <double>>> gradient_matrix, int img_rows, int img_cols)
 {
-    std::vector <std::vector < bool>> wind(a);
+    std::vector <std::vector < bool>> wind(img_rows);
     int i, j, m, k;
     int obl = 50;
     bool x, y;
-    for (i = 0; i < a; i++)
+    for (i = 0; i < img_rows; i++)
     {
-        wind[i].resize(b);
+        wind[i].resize(img_cols);
     }
-    lft = b - 1;
+    lft = img_cols - 1;
     rt = 0;
-    up = a - 1;
+    up = img_rows - 1;
     down = 0;
-    for (i = 0; i < a; i++)
+    for (i = 0; i < img_rows; i++)
     {
-        for (j = 0; j < b; j++)
+        for (j = 0; j < img_cols; j++)
         {
             wind[i][j] = false;
             x = false;
             y = false;
-            for (m = std::max(0, i - a / obl); m < std::min(a - 1, i + a / obl); m++)
+            for (m = std::max(0, i - img_rows / obl); m < std::min(img_rows - 1, i + img_rows / obl); m++)
             {
-                for (k = std::max(0, j - b / obl); k < std::min(b - 1, j + b / obl); k++)
+                for (k = std::max(0, j - img_cols / obl); k < std::min(img_cols - 1, j + img_cols / obl); k++)
                 {
-                    if(abs(mat[m][k].i) > 3*abs(mat[m][k].j))
+                    if(abs(gradient_matrix[m][k].i) > 3*abs(gradient_matrix[m][k].j))
                     {
                             x = true;
                     }
-                    if(abs(mat[m][k].j) > 3*abs(mat[m][k].i))
+                    if(abs(gradient_matrix[m][k].j) > 3*abs(gradient_matrix[m][k].i))
                     {
                             y = true;
                     }

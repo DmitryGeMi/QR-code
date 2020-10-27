@@ -1,14 +1,19 @@
+#include <cmath>
 #include "structures_point.h"
 
-int vect(point <int> p0,point <int> a,point <int> b)
+int vect(const point <int> &p0, const point <int> &a, const point <int> &b)
 {
     return (a.i - p0.i)*(b.j - p0.j) - (a.j - p0.j)*(b.i - p0.i);
 }
-int dist(point <int> a, point <int> b)
+int dist(const point <int> &a, const point <int> &b)
 {
     return (a.i - b.i)*(a.i - b.i) + (a.j - b.j)*(a.j - b.j);
 }
-point <int> intersection(point <int> a, point <int> b, point <int> c, point <int> d)
+double hypotenuse(const double &side_a, const double &side_b)
+{
+    return sqrt(side_a * side_a + side_b * side_b);
+}
+point <int> intersection(const point <int> &a, const point <int> &b, const point <int> &c, const point <int> &d)
 {
     point <int> p;
     double a1, a2, b1, b2, c1, c2, det;

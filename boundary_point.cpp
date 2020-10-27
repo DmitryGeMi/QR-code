@@ -2,25 +2,26 @@
 #include <vector>
 #include "structures_point.h"
 
-int first_operator(int &i, bool first_operation)
+int first_operator(int &i, const bool &first_operation)
 {
     if (first_operation == true)
         i++;
     else
         i--;
 }
-int second_operator(int &j, bool second_operation)
+int second_operator(int &j, const bool &second_operation)
 {
     if (second_operation == true)
         j++;
     else
         j--;
 }
-void boundary_point_one_side(std::vector <point <int>>& pnt, cv::Mat *img,int threshold,
-                             int begin_first, int begin_second,
-                             int end_first, int end_second,
-                             bool first_operation, bool second_operation, bool is_vect)
+void boundary_point_one_side(std::vector <point <int>>& pnt, const cv::Mat &img,const int &threshold,
+                             const int &begin_first, const int &begin_second,
+                             const int &end_first, const int &end_second,
+                             const bool &first_operation, const  bool &second_operation, const bool &is_vect)
 {
+
     point <int> auxiliary_point;
     bool flg = false;
     int i, j, m;
@@ -29,7 +30,7 @@ void boundary_point_one_side(std::vector <point <int>>& pnt, cv::Mat *img,int th
         {
            if(is_vect == true)
            {
-            if ((img->at<cv::Vec3b>(i, j)[0] < threshold) && (img->at<cv::Vec3b>(i, j)[1] < threshold) && (img->at<cv::Vec3b>(i, j)[2] < threshold))
+            if ((img.at<cv::Vec3b>(i, j)[0] < threshold) && (img.at<cv::Vec3b>(i, j)[1] < threshold) && (img.at<cv::Vec3b>(i, j)[2] < threshold))
             {
                 for (m = 0; m < pnt.size(); m++)
                 {
@@ -50,7 +51,7 @@ void boundary_point_one_side(std::vector <point <int>>& pnt, cv::Mat *img,int th
            }
            else
            {
-               if ((img->at<cv::Vec3b>(j, i)[0] < threshold) && (img->at<cv::Vec3b>(j, i)[1] < threshold) && (img->at<cv::Vec3b>(j, i)[2] < threshold))
+               if ((img.at<cv::Vec3b>(j, i)[0] < threshold) && (img.at<cv::Vec3b>(j, i)[1] < threshold) && (img.at<cv::Vec3b>(j, i)[2] < threshold))
                {
                    for (m = 0; m < pnt.size(); m++)
                    {
@@ -72,22 +73,24 @@ void boundary_point_one_side(std::vector <point <int>>& pnt, cv::Mat *img,int th
         }
 }
 
-void boundary_point(std::vector<point<int>>& pnt, cv::Mat *img,int threshold)
+std::vector <point <int>> boundary_point(const cv::Mat &img,int threshold)
 {
+    std::vector <point <int>> pnt;
     boundary_point_one_side(pnt, img, threshold,
                                  0, 0,
-                                 img->rows, img->cols,
+                                 img.rows, img.cols,
                                  true, true, true);
     boundary_point_one_side(pnt, img, threshold,
-                                 img->cols - 1, 0,
-                                 0, img->rows,
+                                 img.cols - 1, 0,
+                                 0, img.rows,
                                  false, true, false);
     boundary_point_one_side(pnt, img, threshold,
-                                 0, img->rows - 1,
-                                 img->cols, 0,
+                                 0, img.rows - 1,
+                                 img.cols, 0,
                                  true, false, false);
     boundary_point_one_side(pnt, img, threshold,
-                                 img->rows - 1, img->cols - 1,
+                                 img.rows - 1, img.cols - 1,
                                  0, 0,
                                  false, false, true);
+    return pnt;
 }

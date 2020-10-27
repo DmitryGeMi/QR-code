@@ -6,7 +6,7 @@
 #include "structures_point.h"
 
 float module(const point<int>& p);
-std::vector <std::vector < point <double>>> gradient(std::vector <std::vector < double>> mat, int a, int b);
-void framing_window(std::vector <std::vector < point <double>>> mat, int a, int b, cv::Mat *img,int &lft,int &rt,int &up,int &down);
+std::vector <std::vector < point <double>>> gradient(const std::vector <std::vector < double>> &monochorome_img, const int &img_rows,
+                                                     const int &img_cols, const int &noise_limit);
 
 #endif

@@ -5,9 +5,9 @@
 #include <vector>
 #include "structures_point.h"
 
-void add_point_pntinside(point <int> *pntinside, point <int> point1, point <int> point2);
-void move_point(point <int> *pntinside, int ind);
-void find_corner_points(std::vector <point <int>> *hull, point <int> *pntinside);
-void paint_angles(cv::Mat *img, point <int> *pntinside);
+void add_point_pntinside(point <int> *pntinside, const point <int> &point1, const point <int> &point2);
+void move_point(point <int> *pntinside, const int &ind);
+void find_corner_points(point <int> *pntinside, const std::vector <point <int>> &hull);
+void paint_corners_intersections(cv::Mat *img, point <int> *pntinside);
 
 #endif
