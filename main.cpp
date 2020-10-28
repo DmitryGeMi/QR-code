@@ -35,13 +35,13 @@ int  main(int argc, char* argv[])
 
     int lft = img.cols - 1, rt = 0, up = img.rows - 1, down = 0;
     int vicinity_size = 50;
-    sides_of_gradient_box( lft, rt, up, down,grad, img.rows, img.cols, vicinity_size);
+    sides_of_gradient_box( lft, rt, up, down, grad, img.rows, img.cols, vicinity_size);
     makeWhite_outside_rect(img, lft, rt, up, down);
 
     std::vector<point<int>> pnt = boundary_point(img, threshold);
 
     std::vector<point<int>> hull = convex_hull(pnt);
-    double parameter_delete_pnt = 0.995;
+    double parameter_delete_pnt = 0.997;
     simplify_hull(hull, parameter_delete_pnt);
 
     point<int> pntinside[8];
