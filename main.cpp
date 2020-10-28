@@ -34,7 +34,8 @@ int  main(int argc, char* argv[])
     make_img_from_gradient(imggrad, grad);
 
     int lft = img.cols - 1, rt = 0, up = img.rows - 1, down = 0;
-    sides_of_gradient_box( lft, rt, up, down,grad, img.rows, img.cols);
+    int vicinity_size = 50;
+    sides_of_gradient_box( lft, rt, up, down,grad, img.rows, img.cols, vicinity_size);
     makeWhite_outside_rect(img, lft, rt, up, down);
 
     std::vector<point<int>> pnt = boundary_point(img, threshold);

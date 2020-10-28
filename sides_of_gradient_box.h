@@ -5,6 +5,8 @@
 #include <vector>
 #include "structures_point.h"
 
-void sides_of_gradient_box(int &lft,int &rt,int &up,int &down,std::vector <std::vector < point <double>>> gradient_matrix, int img_rows, int img_cols);
+void sides_of_gradient_box(int &lft, int &rt, int &up, int &down,
+                           const  std::vector <std::vector < point <double>>> &gradient_matrix,
+                           const int &img_rows, const int &img_cols, const int &vicinity_size);
 
 #endif

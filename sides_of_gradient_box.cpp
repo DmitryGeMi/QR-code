@@ -2,11 +2,12 @@
 #include <vector>
 #include "structures_point.h"
 
-void sides_of_gradient_box(int &lft, int &rt, int &up, int &down, std::vector <std::vector < point <double>>> gradient_matrix, int img_rows, int img_cols)
+void sides_of_gradient_box(int &lft, int &rt, int &up, int &down,
+                           const  std::vector <std::vector < point <double>>> &gradient_matrix,
+                           const int &img_rows, const int &img_cols, const int &vicinity_size)
 {
     std::vector <std::vector < bool>> wind(img_rows);
     int i, j, m, k;
-    int obl = 50;
     bool x, y;
     for (i = 0; i < img_rows; i++)
     {
@@ -23,9 +24,9 @@ void sides_of_gradient_box(int &lft, int &rt, int &up, int &down, std::vector <s
             wind[i][j] = false;
             x = false;
             y = false;
-            for (m = std::max(0, i - img_rows / obl); m < std::min(img_rows - 1, i + img_rows / obl); m++)
+            for (m = std::max(0, i - img_rows / vicinity_size); m < std::min(img_rows - 1, i + img_rows / vicinity_size); m++)
             {
-                for (k = std::max(0, j - img_cols / obl); k < std::min(img_cols - 1, j + img_cols / obl); k++)
+                for (k = std::max(0, j - img_cols / vicinity_size); k < std::min(img_cols - 1, j + img_cols / vicinity_size); k++)
                 {
                     if(abs(gradient_matrix[m][k].i) > 3*abs(gradient_matrix[m][k].j))
                     {

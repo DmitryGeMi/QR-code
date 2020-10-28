@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.8.12)
 
 project(QRcode)
 
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(HEADERS "convex_hull.h" "makeWhite_outside_rect.h" "simplify_hull.h" "basic_geometry.h"
