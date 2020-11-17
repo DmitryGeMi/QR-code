@@ -1,5 +1,5 @@
-#ifndef STRUCTURES_H
-#define STRUCTURES_H
+#ifndef STRUCTURES_POINT_H
+#define STRUCTURES_POINT_H
 
 template < typename T >
 struct point

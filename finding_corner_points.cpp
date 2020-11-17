@@ -4,6 +4,8 @@
 #include "structures_point.h"
 #include "basic_geometry.h"
 
+
+
 void add_point_pntinside(point <int> *pntinside, const point <int> &point1, const point <int> &point2)
 {
     pntinside[6].i = point1.i;
@@ -18,15 +20,26 @@ void move_point(point <int> *pntinside, const int &ind)
     pntinside[ind+1].i = pntinside[ind+3].i;
     pntinside[ind+1].j = pntinside[ind+3].j;
 }
-void paint_corners_intersections(cv::Mat *img, point <int> *pntinside)
+
+
+std::vector<point<int>> find_corners_intersections(point <int> *pntinside)
 {
-    point <int> t;
+    std::vector<point<int>> required_points;
+    point<int> pnt;
     for (int m = 0; m < 8; m = m + 2)
     {
-        t = intersection(pntinside[m % 8], pntinside[(m + 1) % 8], pntinside[(m + 2) % 8], pntinside[(m + 3) % 8]);
-        circle(*img, cv::Point(t.j, t.i), 1, cv::Scalar(50, 100, 200));
+        pnt = intersection(pntinside[m % 8], pntinside[(m + 1) % 8], pntinside[(m + 2) % 8], pntinside[(m + 3) % 8]);
+        required_points.push_back(pnt);
     }
+    return required_points;
 }
+
+void paint_corners_intersections(cv::Mat *img, std::vector<point<int>> point_intersection)
+{
+    for (int ind = 0; ind < point_intersection.size(); ind ++)
+        circle(*img, cv::Point(point_intersection[ind].j, point_intersection[ind].i), 1, cv::Scalar(50, 100, 200));
+}
+
 void find_corner_points(point <int> *pntinside, const std::vector <point <int>> &hull)
 {
     int k = 0, l1, l2, l3, l4, m;

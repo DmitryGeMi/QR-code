@@ -1,8 +1,11 @@
 #include <vector>
+#include <stdexcept>
 #include "structures_point.h"
 #include "basic_geometry.h"
 
 std::vector<point <int>> convex_hull(const std::vector<point <int>> &point_vect) {
+    if (point_vect.size() == 0)
+        throw std::runtime_error("Input image does not contain a black barcode");
     std::vector<point <int>> secondary_point_vect = point_vect;
     point <int> p0 = secondary_point_vect[0];
     point <int> p1;

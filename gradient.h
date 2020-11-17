@@ -7,6 +7,6 @@
 
 float module(const point<int>& p);
 std::vector <std::vector < point <double>>> gradient(const std::vector <std::vector < double>> &monochorome_img, const int &img_rows,
-                                                     const int &img_cols, const int &noise_limit);
+                                                     const int &img_cols, const double &noise_limit);
 
 #endif

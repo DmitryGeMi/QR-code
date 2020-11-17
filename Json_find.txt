@@ -1,0 +1,7 @@
+QJsonObject obj_param = doc_param.object();
+    if (obj_param["Array"].isArray() == true)
+    {
+        std::cout << "Array" <<std::endl;
+    }
+    QJsonArray A = obj_param["Array"].toArray();
+    std::cout << A[0].toInt() <<std::endl;

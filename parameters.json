@@ -1,0 +1,13 @@
+{
+	"mark_candidate_for_barcode_parameters":
+	{
+		"hog_step_in_degree" : 9,
+    	"inaccuracy_perpendicular" : 1,
+    	"window_size"  : 40,
+    	"filter_peaks_hog" : 3
+	},
+	"gradient_parameters" :
+	{
+		"noise_limit" : 0.2
+	}
+}
